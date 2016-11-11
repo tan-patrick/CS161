@@ -1,0 +1,89 @@
+;;; TREE-CONTAINS
+
+* (TREE-CONTAINS 3 '((1 2 3) 7 8)) 
+
+T
+* (TREE-CONTAINS 4 '((1 2 3) 7 8))
+
+NIL
+
+;;; TREE-MAX
+
+* (TREE-MAX '((1 2 3) 7 8))
+
+8
+
+;;; TREE-ORDER
+
+* (TREE-ORDER 3)
+
+(3)
+* (TREE-ORDER '((1 2 3) 7 8))
+
+(1 2 3 7 8)
+
+;;; SUB-LIST
+
+* (SUB-LIST '(a b c d) 0 3)
+
+(A B C)
+* (SUB-LIST '(a b c d) 3 1)
+
+(D)
+* (SUB-LIST '(a b c d) 2 0)
+
+NIL
+
+;;; SPLIT-LIST
+
+* (SPLIT-LIST '(a b c d))
+
+((A B) (C D))
+* (SPLIT-LIST '(a b c d e))
+
+((A B) (C D E))
+* (SPLIT-LIST '(a b c d e f))
+
+((A B C) (D E F))
+
+;;; LIST2BTREE
+
+* (LIST2BTREE '(1))
+
+1
+* (LIST2BTREE '(1 2))
+
+(1 2)
+* (LIST2BTREE '(1 2 3))
+
+(1 (2 3))
+* (LIST2BTREE '(1 2 3 4))
+
+((1 2) (3 4))
+* (LIST2BTREE '(1 2 3 4 5 6 7))
+
+((1 (2 3)) ((4 5) (6 7)))
+* (LIST2BTREE '(1 2 3 4 5 6 7 8))
+
+(((1 2) (3 4)) ((5 6) (7 8)))
+
+;;; BTREE2LIST
+
+* (BTREE2LIST 1)
+
+(1)
+* (BTREE2LIST '(1 2))
+
+(1 2)
+* (BTREE2LIST '(1 (2 3)))
+
+(1 2 3)
+* (BTREE2LIST '((1 2) (3 4)))
+
+(1 2 3 4)
+* (BTREE2LIST '((1 (2 3)) ((4 5) (6 7))))
+
+(1 2 3 4 5 6 7)
+* (BTREE2LIST '(((1 2) (3 4)) ((5 6) (7 8))))
+
+(1 2 3 4 5 6 7 8)

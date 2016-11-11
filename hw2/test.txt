@@ -1,0 +1,54 @@
+; DFS
+
+* (dfs '((A (B)) C (D))) 
+
+(A B C D)
+* (dfs '(A (B C) (D) (E (F (G H)))))
+
+(A B C D E F G H)
+* (dfs '((Z A) (B C) (D) (E (F (G (H I))))))
+
+(Z A B C D E F G H I)
+
+; DFID
+
+* (dfid '((A (B)) C (D)) 3)
+
+(C A C D A B C D)
+* (dfid '(A (B C) (D) (E (F (G H)))) 3)
+
+(A A B C D E A B C D E F)
+* (dfid '(A (B C) (D) (E (F (G H)))) 4)
+
+(A A B C D E A B C D E F A B C D E F G H)
+* (dfid '((Z A) (B C) (D) (E (F (G (H I))))) 1)
+
+NIL
+* (dfid '((Z A) (B C) (D) (E (F (G (H I))))) 4)
+
+(Z A B C D E Z A B C D E F Z A B C D E F G)
+* (dfid '((Z A) (B C) (D) (E (F (G (H I))))) 5)
+
+(Z A B C D E Z A B C D E F Z A B C D E F G Z A B C D E F G H I)
+
+; MC-DFS
+
+* (next-state '(3 3 t) 1 0)
+
+NIL
+* (next-state '(3 3 t) 0 1)
+
+((0 1 NIL))
+* (succ-fn '(3 3 t))
+
+((0 1 NIL) (1 1 NIL) (0 2 NIL))
+* (succ-fn '(1 1 t))
+
+((3 2 NIL) (3 3 NIL))
+* (MC-DFS '(3 3 T)
+
+((3 3 T) (1 1 NIL) (3 2 T) (0 3 NIL) (3 1 T) (2 2 NIL) (2 2 T) (3 1 NIL)
+ (0 3 T) (3 2 NIL) (0 2 T) (3 3 NIL))
+* (MC-DFS '(2 2 NIL) NIL)
+
+((2 2 NIL) (2 2 T) (3 1 NIL) (0 3 T) (3 2 NIL) (0 2 T) (3 3 NIL))
